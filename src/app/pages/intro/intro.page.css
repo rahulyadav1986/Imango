@@ -1,0 +1,18 @@
+ion-content {
+  --background: #0081ca;
+}
+
+ion-slides {
+  height: 100%;
+  --bullet-background-active: #fff;
+  --bullet-background: #000;
+}
+
+.intro-icon {
+  height: 200px;
+}
+
+ion-button {
+  --ion-color-base: #fff !important;
+}
+/*# sourceMappingURL=intro.page.css.map */

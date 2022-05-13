@@ -1,0 +1,29 @@
+Workflow for creating new Incident
+
+Ionic slides simulate the wizard/workflow user experience
+User is not able to progress to next slide until validation is met
+
+Slides in order
+
+#1	Images
+		Maximus images 8
+		Display thumbnails allowing user to delete images
+		Cloudinary CDN (there is an existing image upload/gallery control 		available from cloudinary using angular)
+
+#2	Phone number
+		Collect country code
+		Collect phone number
+		Validation via country code using REGEX
+	First Name
+	Last Name
+
+#3	Questions (1 step per question)
+		Call API/QUESTIONS/GETALL
+			Response<Question> (JSON is available in the wizard ts)
+		Dynamically insert additional slides (1 slide per question)
+		User store answers in JSON model
+
+#4	Description (text area)
+	Start Rating (collect 5 star rating)
+
+#5 	Thank you message, send user back to MANGO FEED

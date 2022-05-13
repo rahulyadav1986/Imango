@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Mobile Number Validation In Ionic
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formGrp" novalidate class="formCls">
+
+    <div>
+      <ion-list>
+<!--       -->
+        <ion-select formControlName="country" [selectedText]="formGrp.controls.country.value"  name="country" id="countryselect">
+          <ion-select-option *ngFor="let country of countries" [value]="country.id">
+            {{country.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label>Mobile Number (10 digit)</ion-label>
+          <ion-input type="tel" formControlName="mobnoctrl" [(ngModel)]="mobNo"
+                     placeholder="Please enter mobile number here"></ion-input>
+        </ion-item>
+        <div class="show-error">
+          <div *ngIf="formGrp.get('mobnoctrl').hasError('required') && formGrp.get('mobnoctrl').dirty">Please enter
+            mobile number
+          </div>
+          <div *ngIf="formGrp.get('mobnoctrl').hasError('pattern') && formGrp.get('mobnoctrl').dirty">
+            Please enter 10 digit mobile number</div>
+        </div>
+      </ion-list>
+
+<!--      <ng-otp-input  [formCtrl]="YourFormControl"  [config]="{length:5}"></ng-otp-input>-->
+
+    </div>
+
+    <ion-item>
+      <ion-button color="primary" full class="common-button" [disabled]="!formGrp.valid" (click)="doSubmit()">Save
+      </ion-button>
+    </ion-item>
+  </form>
+</ion-content>

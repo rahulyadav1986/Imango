@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">mango fax</string>
+    <string name="title_activity_main">mango fax</string>
+    <string name="package_name">com.mangofax</string>
+    <string name="custom_url_scheme">com.mangofax</string>
+    <string name="facebook_app_id">225839309317271</string>
+    <string name="fb_login_protocol_scheme">fb225839309317271</string>
+  <string name="facebook_client_token">9efe1b1f8f209720090f753f1eccd9a5</string>
+</resources>

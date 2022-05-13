@@ -1,0 +1,105 @@
+.center {
+    text-align: center;;
+}
+
+// ion-content {
+//     --background: #0081ca;
+// }
+ 
+// ion-slides {
+//     height: 100%;
+//     --bullet-background-active: #fff;
+//     --bullet-background: #000;
+// }
+
+.ml-3 table{
+    width: 100%;
+}
+
+.qTextContainer {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 10px 20px 10px;
+    text-align: center;
+}
+
+.intro-icon {
+    height: 200px;
+}
+
+.qSubmitButtonContainer {
+    text-align: center;
+    width: 100%;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.qSubmitButton {
+    width: 100%;
+}
+
+ion-button{
+    --ion-color-base: #fff !important;
+    // --border-radius: 20px;
+  }
+
+  ion-slides {
+      background-color: #fff;
+  }
+
+  .phoneHeader {
+      padding-bottom: 40px;
+  }
+
+//   .nxtBtn {
+//     position: fixed;
+//     left: 0;
+//     bottom: 0px;
+//     right: 0;
+//     flex: end;
+//   }
+
+//   ion-slide {
+//     width: 100% !important;
+//   }
+  
+//   .swiper-wrapper {
+//     width: min-content !important;
+//   }
+
+// .swiper-container {
+//     width: 600px;
+//     height: 300px;
+// }
+
+
+form{
+    width: 100%;
+    max-width: 100%;
+}
+.swiper-slide{
+    width: 100% !important;
+    padding: 0 15px;
+}
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    margin: 15px 0 0 0;
+}
+ngb-rating .visually-hidden{
+    display: none;
+}
+
+
+.qSubmitButtonContainer {
+    text-align: center;
+    width: 100%;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+.ml-3 table{
+    width: 100%;
+}

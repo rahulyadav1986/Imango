@@ -1,0 +1,215 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Mango Fax
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>New Mango Report</ion-title>
+    
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-slides pager="false" [options]="slideOpts" >
+
+  
+  <ion-slide>
+    <form [formGroup]="telForm" (ngSubmit)="onSavePhone()" class="phoneCollection">
+      <h4 class="phoneHeader">ENTER THE PHONE NUMBER OF THE MANGO</h4>
+      <ion-item>
+        <!-- <ion-label position="floating">Tel Input</ion-label> -->
+        <ion-intl-tel-input 
+          formControlName="phoneNumber" >
+        </ion-intl-tel-input>
+      </ion-item>
+
+      <div *ngIf="phoneNumber.invalid && phoneNumber.touched">
+        <ion-text color="danger" *ngIf="phoneNumber.errors.required">
+          <p class="ion-no-margin"><sub>Phone is required.</sub></p>
+        </ion-text>
+        <ion-text color="danger" *ngIf="phoneNumber.errors.phone">
+          <p class="ion-no-margin"><sub>Phone number is not valid.</sub></p>
+        </ion-text>
+      </div>
+
+      <!-- <ion-button class="btn btn-primary nxtBtn" [disabled]="!telForm.valid">NEXT</ion-button> -->
+
+      <div class="row qSubmitButtonContainer">
+        <div class="col-md-12 nxtBtn">
+          <ion-button (click)="next()" class="qSubmitButton" class="btn btn-primary" [disabled]="!telForm.valid">
+            Next
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </ion-slide>
+
+    <ion-slide>
+      <form class="phoneCollection" [formGroup]="telForm">
+        <h4 *ngIf="images.length == 0" class="phoneHeader">UPLOAD UP TO 8 PHOTOS</h4>
+        <ion-list>
+          <ion-item *ngFor="let file of images; let i = index">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="file.data"></ion-img>
+            </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+              {{ file.name }}
+            </ion-label>
+            <!-- <ion-button slot="end" fill="clear" (click)="startUpload()">
+              <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+            </ion-button> -->
+            <ion-button slot="end" fill="clear" (click)="deleteImage(file)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+        
+        <ion-button *ngIf="images.length < 8" (click)="selectImage()"  shape="circle" class="qSubmitButton" class="btn btn-primary">
+          <ion-icon slot="icon-only" name="camera"></ion-icon>
+        </ion-button>
+        <div class="row qSubmitButtonContainer">
+          <div class="col-md-12">
+            <ion-button (click)="prev()" class="qSubmitButton" class="btn btn-primary">
+              back
+            </ion-button>
+          </div>
+          <div class="col-md-12"  *ngIf="images.length > 0">
+            <ion-button (click)="next()" class="qSubmitButton" class="btn btn-primary">
+              Next
+            </ion-button>
+          </div>
+          <!-- <div class="col-md-12"  *ngIf="images.length == 0">
+            <ion-button (click)="next()" class="qSubmitButton" class="btn btn-primary" [disabled]="true">
+              Next
+            </ion-button>
+          </div> -->
+          
+        </div>
+      </form>
+    </ion-slide>
+
+
+    <ion-slide *ngFor="let question of questions; let i = index">
+      <div class="card">
+        <div class="card-header bg-transparent border-success">
+          <h3 class="center">MANGO Questions</h3>
+          <h4 class="center">{{i + 1 + " of " + questions.length}}</h4>
+        </div>
+        <div class="qTextContainer">{{ question.question }}</div>
+
+        <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form [formGroup]="surveyQuestionForm">
+                   <ion-list>
+                      <ion-radio-group id="q{{ question.qNo }}_{{ i }}">
+                        <ion-item *ngFor="
+                            let anwr of question.answers;
+                            let a = index">
+
+                          <ion-label>{{ anwr.value }}</ion-label>
+                          <ion-radio name="answer" (click)="valid()"  value="{{anwr.code}}" [ngClass]="{
+                                  'is-invalid':
+                                    surveyQuestionForm.get(
+                                      'q' + question.qNo
+                                    ).errors && formSubmitted
+                                }">
+                          </ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </ion-list>
+                    <div class="text-danger" *ngIf="
+                            surveyQuestionForm
+                              .get('q' + question.qNo)
+                              .hasError('required') && formSubmitted
+                          ">
+                      Answer required
+                    </div>
+                    <div class="row qSubmitButtonContainer">
+                      <div class="col-md-12">
+                        <ion-button (click)="qprev()" class="qSubmitButton" class="btn btn-primary">
+                          Back
+                        </ion-button>
+                      </div>
+                      <div class="col-md-12">
+                        <ion-button (click)="qnext()" class="qSubmitButton" class="btn btn-primary" [disabled]="isNotValid">
+                          Next
+                        </ion-button>
+                      </div>                      
+                    </div>            
+            </form>
+          </div>
+        </div>
+       
+      </div>
+
+      </div>
+    </ion-slide> 
+
+  <ion-slide>
+    <form [formGroup]="tellForm" (ngSubmit)="onDescSave()" class="phoneCollection">
+      <h4 class="phoneHeader">TELL US WHAT HAPPENED</h4>
+      <ion-item>
+        <ion-label class="qTextContainer" position="floating">What is your idea about our institute?</ion-label>
+        <ion-textarea formControlName="Tell_us"></ion-textarea>
+      </ion-item>
+      <div class="row qSubmitButtonContainer">
+        <div class="col-md-12">
+          <ion-button (click)="prev()" class="qSubmitButton" class="btn btn-primary">
+            Back
+          </ion-button>
+          <ion-button class="qSubmitButton" (click)="next()" class="btn btn-primary" [disabled]="!tellForm.valid">
+            Next
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </ion-slide>
+
+  <ion-slide>
+    <form [formGroup]="finform" (ngSubmit)="onRatingChange()" class="phoneCollection">
+      <h4 class="phoneHeader">OVERALL RATING</h4>
+      <ngb-rating [(rate)]="currentRate" [max] = "5" (click)="valid()" formControlName="Final"></ngb-rating>
+      <div class="row qSubmitButtonContainer">
+        <div class="col-md-12">
+          <ion-button (click)="prev()" class="qSubmitButton" class="btn btn-primary">
+            Back
+          </ion-button>
+          <ion-button class="qSubmitButton" (click)="next()" class="btn btn-primary" [disabled]="isNotValid">
+            Finish
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </ion-slide>
+
+  <ion-slide>
+    <form [formGroup]="telForm" (ngSubmit)="close()" class="phoneCollection">
+      <h4 class="phoneHeader">THANK YOU FOR YOUR REPORT</h4>
+
+      <div class="row qSubmitButtonContainer">
+        <div class="col-md-12">
+          <ion-button [routerLink]="['/home']" class="qSubmitButton" class="btn btn-primary">
+            EXIT
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </ion-slide>
+
+</ion-slides>
+</ion-content>

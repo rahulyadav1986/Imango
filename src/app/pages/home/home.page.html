@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="power"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Mango Fax</ion-title>
+    
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/wizard']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list *ngFor="let incident of data">
+
+    <ion-card>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img [src]="incident.author.imageUrl">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{incident.author.name}}</h3>
+          <p>{{incident.createDate | date : 'short'}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-img [src]="incident.images[0]" class="img-fax-summary"></ion-img>
+      <ion-card-header class="person-info">
+        <ion-card-title>{{incident.country + ', ' + incident.city}}</ion-card-title>
+        <ion-card-subtitle>
+          <ion-icon name="person"></ion-icon>&nbsp;{{incident.firstName}}
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          <ion-icon name="call-outline"></ion-icon>&nbsp;{{incident.phone}}
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          <ion-icon name="document-text-outline"></ion-icon>&nbsp;"{{incident.description}}"
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-footer>
+        <ion-row>
+          <ion-col center text-center>
+            <button class="footer-button" (click)="likeIncident(incident.id)">
+              <ion-icon name="thumbs-up" class="footer-icon" [ngStyle]="{'color': incident.likedByCurrentUser ? '#FF8243' : '#999999'}">
+              </ion-icon>
+              <div>
+                <ion-label>Likes</ion-label><br>
+                <ion-badge>{{incident.likeCount}}</ion-badge>
+              </div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <button class="footer-button" [routerLink]="['/comment', incident.id]">
+              <ion-icon name="chatbubbles-outline" class="footer-icon"></ion-icon>
+              <div>
+                <ion-label>Comments</ion-label><br>
+                <ion-badge>{{incident.commentCount}}</ion-badge>
+              </div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <button class="footer-button" [routerLink]="['/fax', incident.id]">
+              <ion-icon name="globe-outline" class="footer-icon"></ion-icon>
+              <div>
+                <ion-label>Full Report</ion-label><br>
+                <ion-badge>{{incident.totalIncidentsReported}}</ion-badge>
+              </div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+
+    </ion-card>
+
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

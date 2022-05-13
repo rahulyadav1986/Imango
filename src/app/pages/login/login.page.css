@@ -1,0 +1,65 @@
+ion-content {
+  --padding-top: 20%;
+  --padding-start: 10%;
+  --padding-end: 10%;
+}
+
+.bgStyle {
+  --ion-background-color: #FF8243;
+}
+
+.input-group {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.signUpButton {
+  font-size: 12px;
+}
+
+.errors {
+  font-size: small;
+  color: #fff;
+  background: var(--ion-color-danger);
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.intro-icon {
+  width: 200px;
+}
+
+.login-icon {
+  width: 100px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.t-center {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 44px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.fbButton, ion-button {
+  --ion-color-base: #fff !important;
+  font-weight: bold;
+  --ion-color-contrast: #000 !important;
+}
+
+.myForm {
+  margin-top: 167px;
+}
+/*# sourceMappingURL=login.page.css.map */

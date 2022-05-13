@@ -1,0 +1,6 @@
+{
+	"appId": "com.mangofax",
+	"appName": "Mango FAX",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

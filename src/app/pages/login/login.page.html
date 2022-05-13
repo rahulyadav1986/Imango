@@ -1,0 +1,62 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Devdactic App</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="bgStyle">
+  <div *ngIf="exceptionData?.length > 0">
+    <div>{{exceptionData}}</div>
+  </div>
+  <div>
+
+    <h1 class="t-center">MANGO</h1>
+    <img class="login-icon center mb20" src="assets/icon/favicon.png">
+    <h1 class="t-center">FAX</h1>
+    <form (ngSubmit)="login()" [formGroup]="credentials" class="myForm">
+      <!-- <div class="input-group">
+      <ion-item>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="email.errors?.required">Email is required</span>
+        <span *ngIf="email.errors?.email">Email is invalid</span>
+      </div>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf="password.errors?.required">Password is required</span>
+        <span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>
+      </div>
+    </div>
+
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Log in</ion-button>
+    <ion-button type="button" expand="block" color="dark" fill="clear" class="signUpButton">Not yet a member? Sign up!
+    </ion-button> -->
+
+      <!-- <ion-button>Default</ion-button>
+    <ion-button color="primary">Primary</ion-button>
+    <ion-button color="secondary">Secondary</ion-button>
+    <ion-button color="tertiary">Tertiary</ion-button>
+    <ion-button color="success">Success</ion-button>
+    <ion-button color="warning">Warning</ion-button>
+    <ion-button color="danger">Danger</ion-button>
+    <ion-button color="light">Light</ion-button>
+    <ion-button color="medium">Medium</ion-button>
+    <ion-button color="dark">Dark</ion-button> -->
+
+      <!-- <ion-button type="button" expand="block" color="tertiary">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      Sign in with Google
+    </ion-button> -->
+      <ion-button class="fbButton" type="button" expand="block" color="tertiary" (click)="loginWithFacebook()">
+        <ion-icon name="logo-facebook" slot="start"></ion-icon>
+        Sign in with Facebook
+      </ion-button>
+
+    </form>
+  </div>
+</ion-content>

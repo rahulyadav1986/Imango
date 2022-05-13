@@ -1,0 +1,57 @@
+.center {
+  text-align: center;
+}
+
+.ml-3 table {
+  width: 100%;
+}
+
+.qTextContainer {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 10px 20px 10px;
+  text-align: center;
+}
+
+.intro-icon {
+  height: 200px;
+}
+
+.qSubmitButtonContainer {
+  text-align: center;
+  width: 100%;
+  padding-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.qSubmitButton {
+  width: 100%;
+}
+
+ion-button {
+  --ion-color-base: #fff !important;
+}
+
+ion-slides {
+  background-color: #fff;
+}
+
+.phoneHeader {
+  padding-bottom: 40px;
+}
+
+.nxtBtn {
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+  -webkit-box-flex: end;
+      -ms-flex: end;
+          flex: end;
+}
+/*# sourceMappingURL=wizard.page.css.map */
